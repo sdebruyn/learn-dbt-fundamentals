@@ -34,7 +34,10 @@ models:
                 - placed
                 - return_pending
       - name: customer_id
+        description: The ID of the customer who has placed this order.
         tests:
           - relationships:
               to: ref('stg_customers')
               field: customer_id
+      - name: order_date
+        description: The date on which this order was placed.
