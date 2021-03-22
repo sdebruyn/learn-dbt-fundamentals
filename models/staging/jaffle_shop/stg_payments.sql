@@ -1,6 +1,11 @@
 select
-  orderid as order_id,
-  sum(amount) as amount
-from raw.stripe.payment
-where status = 'success'
-group by orderid
+    id as payment_id,
+    orderid as order_id,
+    paymentmethod as payment_method,
+    status,
+
+    -- amount is stored in cents, convert it to dollars
+    amount / 100 as amount,
+    created as created_at
+
+from raw.stripe.payment 
